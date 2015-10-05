@@ -1,4 +1,4 @@
-from flask import flask
+from flask import Flask
 
 app = Flask(__name__)
 
@@ -7,5 +7,5 @@ app = Flask(__name__)
 def homepage():
 	return "Hi there, how ya doin?"
 
-if __name__ = '__main__':
+if __name__ == '__main__':
 	app.run()
