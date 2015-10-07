@@ -5,23 +5,38 @@
 		<title>Flask, baby!</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet"> <!--'staic' means the folder and after comma it's the file name -->
-		<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico')}}"
+		<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico')}}">
+		
 	</head>
-	<body>
 		<header>
-		<div class="navbar-header">
-      
-      <a class="navbar-brand" href="#">
-      	<img src="{{ url_for('static', filename="images/mainlogo.png") }}" id="toppicture"/>
-      </a>
-
-    </div>
-    <ul class="nav nav-pills" role="tablist">
-			  <button type="button" class="btn btn-primary" aria-label="Left Align" id="topbutton">
+			<div class="navbar-header">
+		  <a class="navbar-brand" href="#">
+		  	<img src="{{ url_for('static', filename="images/mainlogo.png") }}" id="toppicture"/>
+		  </a>
+		  		 <a href="/dashboard"> <button type="button" class="btn btn-primary" aria-label="Right Align" id="topbutton">
 	  			<span class="glyphicon glyphicon-camera" aria-hidden="true"></span> Start Learning
-					</button>
-			</ul>
+					</button></a>
+ 	 </div>
+
+ 	 <div class="container-fluid">
+				<ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+     </div>
 		</header>
+	<body>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/boostrap.min.js') }}"></script>
+
 	</body>
 
 </html>
