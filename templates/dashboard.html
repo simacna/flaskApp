@@ -5,6 +5,21 @@ Say we have a footer folder inside our templates folder, we would say #{% extend
 
 {% block body %}
 
-<p>hello</p>
+<div> {# this is video number 7 #}
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#basics" aria-controls="basics" role="tab" data-toggle="tab">Basics</a></li>
+    <li role="presentation"><a href="#wdev" aria-controls="wdev" role="tab" data-toggle="tab">Web Development</a></li>
+    <li role="presentation"><a href="#dan" aria-controls="dan" role="tab" data-toggle="tab">Data Analysis</a></li>
+  </ul>
+  <!-- Tab panes -->
+ <div class="tab-content">
+  <div role="tabpanel" class="tab-pane fade in active" id="basic">Python basics</div>
+  <div role="tabpanel" class="tab-pane fade" id="wdev">Web Development goodies</div>
+  <div role="tabpanel" class="tab-pane fade" id="dan">Data Analysis</div>
+ </div>
+
+</div>
 
 {% endblock%}
