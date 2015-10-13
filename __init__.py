@@ -6,9 +6,12 @@ app = Flask(__name__)
 def homepage():
 	return render_template("main.html")
 
-@app.route('/dashboard')
-def homepage():
-	return render_template("main.html")
+@app.route('/slashboard/') #whatever function is provided  below the route will appear, hence both /slashboard and
+#/dashboard will render the 'hi' page
+@app.route('/dashboard/')
+def dashboard():
+	# return render_template("main.html")
+	return render_template("dashboard.html")
 
 if __name__ == '__main__':
 	app.run(debug=True, port=8000, host='0.0.0.0')
