@@ -15,7 +15,13 @@ Say we have a footer folder inside our templates folder, we would say #{% extend
   </ul>
   <!-- Tab panes -->
  <div class="tab-content">
-  <div role="tabpanel" class="tab-pane fade in active" id="basic">Python basics</div>
+  <div role="tabpanel" class="tab-pane fade in active" id="basic">Python basics
+    <ul>
+      {% for topic in TOPIC_DICT["Basics"] %}
+        <li><a href="{{topic[1]}}">{{topic[0]}}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
   <div role="tabpanel" class="tab-pane fade" id="wdev">Web Development goodies</div>
   <div role="tabpanel" class="tab-pane fade" id="dan">Data Analysis</div>
  </div>
