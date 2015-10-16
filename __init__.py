@@ -19,9 +19,14 @@ def dashboard():
 	flash("flash test!!!")
 	return render_template("dashboard.html", TOPIC_DICT = TOPIC_DICT) #the first TOPIC_DICT is what will be referenced in the HTML
 
-# @app.errorhandler(404) #app is the above app = Flask(__name__) and errorhandler is part of Flask
+@app.errorhandler(404) #app is the above app = Flask(__name__) and errorhandler is part of Flask
 def page_not_found(e):
 	return render_template("404.html")
+
+# @app.errorhandler(405) -- assuming the login route did  not pass the methods=['GET', 'POST']
+#then method_not_found function would run
+# def method_not_found(e):
+# 	return render_template("404.html")
 
 # @app.route('/slashboard/') this was just a 500 error handling sample
 # def slashboard():
