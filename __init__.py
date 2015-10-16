@@ -9,7 +9,7 @@ app = Flask(__name__)
 def homepage():
 	return render_template("main.html")
 
-@app.route('/slashboard/') #whatever function is provided  below the route will appear, hence both /slashboard and
+# @app.route('/slashboard/') #whatever function is provided  below the route will appear, hence both /slashboard and
 #/dashboard will render the 'hi' page
 
 @app.route('/dashboard/')
@@ -20,6 +20,14 @@ def dashboard():
 @app.errorhandler(404) #app is the above app = Flask(__name__) and errorhandler is part of Flask
 def page_not_found(e):
 	return render_template("404.html")
+
+@app.route('/slashboard/')
+def slashboard():
+	try:
+	# return render_template("main.html")
+		return render_template("dashboard.html", TOPIC_DICT = boner)
+	except Exception as e:
+		return render_template("500.html")
 
 if __name__ == '__main__':
 	app.run(debug=True, port=8000, host='0.0.0.0')
