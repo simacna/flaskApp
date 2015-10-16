@@ -33,7 +33,7 @@ def page_not_found(e):
 
 @app.route('/login/', methods=['GET', 'POST'])
 def login_page():
-	render_template("login.html")
+	return render_template("login.html")
 
 if __name__ == '__main__':
 	app.secret_key = 'super secret key'
