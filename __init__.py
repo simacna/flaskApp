@@ -19,7 +19,7 @@ def dashboard():
 	flash("flash test!!!")
 	return render_template("dashboard.html", TOPIC_DICT = TOPIC_DICT) #the first TOPIC_DICT is what will be referenced in the HTML
 
-@app.errorhandler(404) #app is the above app = Flask(__name__) and errorhandler is part of Flask
+# @app.errorhandler(404) #app is the above app = Flask(__name__) and errorhandler is part of Flask
 def page_not_found(e):
 	return render_template("404.html")
 
@@ -30,6 +30,10 @@ def page_not_found(e):
 # 		return render_template("dashboard.html", TOPIC_DICT = boner)
 # 	except Exception as e:
 # 		return render_template("500.html", error=e)
+
+@app.route('/login/', methods=['GET', 'POST'])
+def login_page():
+	render_template("login.html")
 
 if __name__ == '__main__':
 	app.secret_key = 'super secret key'
