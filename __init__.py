@@ -1,10 +1,9 @@
-from flask import Flask, render_template, flash
+from flask import Flask, render_template, flash, request, url_for, redirect #url_for allows us to get the url for a function
 from content_management import Content #import Content() class
 
 TOPIC_DICT = Content() #create variable and set it as the Content() class with the returned list
 
 app = Flask(__name__)
-
 
 @app.route('/')
 def homepage():
@@ -16,7 +15,7 @@ def homepage():
 @app.route('/dashboard/')
 def dashboard():
 	# return render_template("main.html")
-	flash("flash test!!!")
+	# flash("flash test!!!")
 	return render_template("dashboard.html", TOPIC_DICT = TOPIC_DICT) #the first TOPIC_DICT is what will be referenced in the HTML
 
 @app.errorhandler(404) #app is the above app = Flask(__name__) and errorhandler is part of Flask
@@ -38,7 +37,31 @@ def page_not_found(e):
 
 @app.route('/login/', methods=['GET', 'POST'])
 def login_page():
-	return render_template("login.html")
+	error = ''
+	try:
+		if request.method == "POST": #this is for a POST request
+			attempted_username = request.form['username'] #username is in reference to value="{{request.form.username}}" in the login.html page
+			attempted_password = request.form['password']
+
+			# flash(attempted_username)
+			# flash(attempted_password) #just doing this for debugging
+
+			if attempted_username == "admin" and attempted_password == "password":
+				return redirect(url_for('dashboard')) #if they login then we send to the dashboard. 'dashboard' looks for a function named
+				#dashboard and this will look above, find the dashboard function and send user to /dashboard
+
+			else:
+				error = "Invalid credentials. Try Again." #if login doesn't work 
+
+		return render_template("login.html", error=error) #this will only run if the if statement above doesn't return/redirect
+		#to /dashboard
+
+
+
+	except Exception as e:
+		flash(e) #we'll remove this, generally it's a bad idea to let errors be displayed - just here for debugging purposes
+		return render_template("login.html", error=error)
+	# return render_template("login.html")
 
 if __name__ == '__main__':
 	app.secret_key = 'super secret key'
