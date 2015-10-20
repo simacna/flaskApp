@@ -1,5 +1,6 @@
 from flask import Flask, render_template, flash, request, url_for, redirect #url_for allows us to get the url for a function
 from content_management import Content #import Content() class
+from dbconnect import connection
 
 TOPIC_DICT = Content() #create variable and set it as the Content() class with the returned list
 
@@ -62,6 +63,14 @@ def login_page():
 		flash(e) #we'll remove this, generally it's a bad idea to let errors be displayed - just here for debugging purposes
 		return render_template("login.html", error=error)
 	# return render_template("login.html")
+
+@app.route('/register', methods=['GET', 'POST'])
+def register_page(): 
+	try:
+		c, conn = connection() #Python connecting to the database
+		return("OK")
+	except Exception as e:
+		return(str(e))
 
 if __name__ == '__main__':
 	app.secret_key = 'super secret key'
